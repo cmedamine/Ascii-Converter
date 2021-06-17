@@ -1,58 +1,38 @@
+
+import 'package:dcode/features/dcode/bloc/dcode_bloc.dart';
+import 'package:dcode/features/dcode/pages/text_hash_page.dart';
+// import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'features/dcode/pages/text_conversion_page.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await DesktopWindow.setMinWindowSize(Size(380, 700));
   // await DesktopWindow.setMaxWindowSize(Size(380, 700));
-
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _value = 1;
-
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Dcode'),),
-      drawer: Drawer(),
-      body: SingleChildScrollView(
-              child: Column(
-          children: <Widget>[
-            for (int i = 1; i <= 10; i++)
-              ListTile(
-                title: Text(
-                  'Radio $i',
-                ),
-                leading: Radio(
-                  value: i,
-                  groupValue: _value,
-                  onChanged: i == 9 ? null : (int value) {
-                    setState(() {
-                      _value = value;
-                    });
-                  },
-                ),
-              ),
-          ],
+    return BlocProvider(
+      create: (context) => DcodeBloc(),
+      child: MaterialApp(
+        title: 'Material App',
+        theme: ThemeData(
+          brightness: Brightness.light,
         ),
+        debugShowCheckedModeBanner: false,
+        home: TextConversionPage(),
+        routes: {
+          TextConversionPage.textConvertionRoute: (ctx) => TextConversionPage(),
+          TextHashPage.textHashRoute: (ctx) => TextHashPage(),
+        },
       ),
+      
     );
   }
 }
