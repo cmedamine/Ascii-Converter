@@ -1,4 +1,4 @@
-package com.example.dcode
+package com.nimbleapps.asciiconverter
 
 import io.flutter.embedding.android.FlutterActivity
 

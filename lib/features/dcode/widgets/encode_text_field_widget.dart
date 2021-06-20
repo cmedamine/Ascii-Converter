@@ -24,6 +24,7 @@ class EncodeTextFieldWidget extends StatefulWidget {
 }
 
 class _DcodeTextFieldWidgetState extends State<EncodeTextFieldWidget> {
+  var val;
   TextEditingController _decodeController;
 
   @override
@@ -59,6 +60,8 @@ class _DcodeTextFieldWidgetState extends State<EncodeTextFieldWidget> {
                     ? Container()
                     : IconButton(
                         onPressed: () async {
+                          widget.configs(value: await FlutterClipboard.paste());
+                          widget.dcodeBloc.add(decode);
                           _decodeController.text =
                               await FlutterClipboard.paste();
                         },
@@ -97,6 +100,7 @@ class _DcodeTextFieldWidgetState extends State<EncodeTextFieldWidget> {
                   minLines: null,
                   controller: _decodeController,
                   onChanged: (value) {
+                    val = value;
                     if (widget.isOn) {
                       widget.configs(value: value);
                       widget.dcodeBloc.add(decode);
@@ -105,7 +109,7 @@ class _DcodeTextFieldWidgetState extends State<EncodeTextFieldWidget> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: widget.textHint,
-                    filled: false,
+                    filled: true,
                     isCollapsed: true,
                     contentPadding:
                         EdgeInsets.symmetric(vertical: 16, horizontal: 8),

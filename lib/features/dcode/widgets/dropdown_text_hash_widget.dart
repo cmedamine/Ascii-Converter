@@ -34,6 +34,27 @@ class DropDownTextHashWidget extends StatelessWidget {
                 .toList(),
             onChanged: (selected) {
               textHashMenuItem = selected;
+
+              switch (textHashMenuItem) {
+                case TextHashMenuItems.SHA1:
+                  
+                  break;
+                case TextHashMenuItems.SHA224:
+                  
+                  break;
+                case TextHashMenuItems.SHA256:
+                  
+                  break;
+                case TextHashMenuItems.SHA384:
+                  
+                  break; 
+                case TextHashMenuItems.SHA512:
+                  
+                  break;
+                case TextHashMenuItems.MD5:
+                  
+                  break;         
+              }
             },
           ),
         )

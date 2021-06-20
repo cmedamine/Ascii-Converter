@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
 import '../bloc/dcode_bloc.dart';
@@ -221,7 +222,8 @@ Output:
 VGhpcyBpcyBzb21lIHRleHQgdG8gY29udmVydCB2aWEgQ3J5cHQu''',
 };
 
-Map<String, String> sheetInfo = binInfo;
+Map<String, String> sheetInfoText = binInfo;
+
 
 extension SelectedTextConvertionConfigExtension on TextConvertionMenuItems {
   String get name => describeEnum(this);
@@ -230,6 +232,7 @@ extension SelectedTextConvertionConfigExtension on TextConvertionMenuItems {
       case TextConvertionMenuItems.Binary:
         return 'Binary';
       case TextConvertionMenuItems.Ascii:
+      
         return 'Ascii';
       case TextConvertionMenuItems.Hex:
         return 'Hex';
@@ -426,3 +429,17 @@ void setTextHashConfig({
     default:
   }
 }
+
+
+
+Map<String, String> sheetInfoHash = {
+  'About SHA create hash tool': '''Complete a SHA output on the data in the Input window choosing from Sha-1, Sha-224, Sha-256, Sha-384, or Sha-512. This set of cryptographic hash functions was designed by the US National Security Agency (NSA) and published in the early 2000’s.
+
+Short for Secure Has Algorithm, the Sha function is an algorithm that hashes data such as a text file into a fixed length variable know as a has. This computed hash value is then used to verify copies of the original data. You cannot recreate the original from the hash value. The SHA functions include digests for 224, 256, 384, or 512 bits.
+
+Security provided by a hash algorithm depends on it being able to produce a unique value. A collision occurs when you get the same hash value for different data. A strong hash value is resistant to computational attacks. With a weak hash it could be possible to produce a collision. A broken hash is where collisions occurred.
+
+Security flaws have been detected in SHA-1, but the other SHA algorithms do not have these flaws.
+
+Hash keying is also known as convergent encryption. This keying and encryption is a cryptosystem that produces ciphertext from plain text.''',
+};

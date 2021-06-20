@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
@@ -13,7 +14,6 @@ part 'dcode_event.dart';
 part 'dcode_state.dart';
 
 class DcodeBloc extends Bloc<DcodeEvent, DcodeState> {
-
   String encoded = '';
   String decoded = '';
 
@@ -24,180 +24,175 @@ class DcodeBloc extends Bloc<DcodeEvent, DcodeState> {
     DcodeEvent event,
   ) async* {
     if (event is GetBinaryFromString) {
-      //* EMPLEMENT GET STRING EVENT
       encoded = convertStringToBinary(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromBinary) {
       decoded = convertBinaryToString(event.textString);
-      print('decoded: $decoded');
+
       yield Decoded(decoded: decoded);
     } else if (event is GetAsciiFromString) {
       encoded = convertStringToAscii(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromAscii) {
       decoded = convertAsciiToString(event.textString);
-      print('decoded : $decoded');
+
       yield Decoded(decoded: decoded);
     } else if (event is GetHexFromString) {
       encoded = convertStringToHex(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromHex) {
       decoded = convertHexToString(event.textString);
-      print('decoded : $decoded');
+
       yield Decoded(decoded: decoded);
     } else if (event is GetOctalFromString) {
       encoded = convertStringToOctal(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromOctal) {
       decoded = convertOctalToString(event.textString);
-      print('decoded : $decoded');
+
       yield Decoded(decoded: decoded);
     } else if (event is GetReversedLettersFromString) {
       encoded = reversLetters(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromReversedLetters) {
       decoded = reversLetters(event.textString);
-      print('decoded : $decoded');
+
       yield Decoded(decoded: decoded);
     } else if (event is GetReversedWordsFromString) {
       encoded = reversWords(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromReversedWords) {
       decoded = reversWords(event.textString);
-      print('decoded : $decoded');
+
       yield Decoded(decoded: decoded);
     } else if (event is GetCapitalizedSentenseFromString) {
       encoded = capitalizeSentence(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromCapitalizedSentense) {
-      print('decoded : $decoded');
       decoded = event.textString;
       yield Decoded(decoded: decoded);
     } else if (event is GetCapitalizedWordsFromString) {
       encoded = capitalizeWord(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromCapitalizedWords) {
-      print('decoded : $decoded');
       decoded = event.textString;
       yield Decoded(decoded: decoded);
     } else if (event is GetUpperCasedFromString) {
       encoded = convertStringToUpperCase(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromUpperCased) {
-      print('decoded : $decoded');
       decoded = event.textString;
       yield Decoded(decoded: decoded);
     } else if (event is GetLowerCasedFromString) {
       encoded = convertStringToLowerCase(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromLowerCased) {
-      print('decoded : $decoded');
       decoded = event.textString;
       yield Decoded(decoded: decoded);
     } else if (event is GetUpsideDown) {
       encoded = upsideDown(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetUpsideDownNormal) {
       decoded = upsideDownToNormal(event.textString);
       yield Decoded(decoded: decoded);
     } else if (event is GetRandomCaseFromString) {
       encoded = randomCase(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromRandomCase) {
       decoded = randomCase(event.textString);
-      print('encoded : $encoded');
+
       yield Decoded(decoded: decoded);
     } else if (event is GetBase64EncodeString) {
       encoded = base64EncodeString(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetBase64DecodeString) {
       decoded = base64DecodeString(event.textString);
-      print('decoded : $decoded');
+
       yield Decoded(decoded: decoded);
     } else if (event is GetMorseFromString) {
       encoded = converteMorse(event.textString, false);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromMorse) {
       decoded = converteMorse(event.textString, true);
-      print('decoded : $decoded');
+
       yield Decoded(decoded: decoded);
     } else if (event is GetNatoFromString) {
       encoded = convertNato(event.textString, false);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromNato) {
       decoded = convertNato(event.textString, true);
-      print('decoded : $decoded');
+
       yield Decoded(decoded: decoded);
     } else if (event is GetZalgoMiniFromString) {
       encoded = convertZalgo(input: event.textString, zalgoOptMini: true);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromZalgoMini) {
       decoded = convertZalgo(input: event.textString);
-      print('decoded : $decoded');
+
       yield Decoded(decoded: decoded);
     } else if (event is GetZalgoNormalFromString) {
       encoded = convertZalgo(input: event.textString, zalgoOptNormal: true);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromZalgoNormal) {
       decoded = convertZalgo(input: event.textString);
-      print('decoded : $decoded');
+
       yield Decoded(decoded: decoded);
     } else if (event is GetZalgoMaxiFromString) {
       encoded = convertZalgo(input: event.textString, zalgoOptMaxi: true);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetStringFromZalgoMaxi) {
       decoded = convertZalgo(input: event.textString);
-      print('decoded : $decoded');
+
       yield Decoded(decoded: decoded);
     } else if (event is GetSha1FromString) {
       encoded = getSha1Hash(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetSha224FromString) {
       encoded = getSha224Hash(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetSha256FromString) {
       encoded = getSha256Hash(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetSha384FromString) {
       encoded = getSha384Hash(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetSha512FromString) {
       encoded = getSha512Hash(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is GetMd5FromString) {
       encoded = getMd5Hash(event.textString);
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is ClearEncoded) {
       encoded = '';
-      print('encoded : $encoded');
+
       yield Encoded(encoded: encoded);
     } else if (event is ClearDecoded) {
       decoded = '';
-      print('decoded : $decoded');
+
       yield Decoded(decoded: decoded);
     }
   }
@@ -213,7 +208,7 @@ bool _isUtf16Surrogate(int value) {
 
 String convertStringToBinary(String input) {
   return Utf8Encoder().convert(input).map((aChar) {
-    return aChar.toRadixString(2);
+    return aChar.toRadixString(2).padLeft(8, '0');
   }).join(' ');
 }
 
@@ -355,10 +350,18 @@ String reversWords(String input) {
 }
 
 String upsideDown(String input) {
-  final filtered = RemoveEmoji().removemoji(input);
+  final removedEmojie = RemoveEmoji().removemoji(input);
+
+  // //safty check:
+  // final filtr = Utf8Codec()
+  //     .encoder
+  //     .convert(removedEmojie)
+  //     .map((charCode) => String.fromCharCode(charCode))
+  //     .join();
+
   try {
-    var normal = "abcdefghijklmnopqrstuvwxyz_,;.?!/\\'";
-    var split = "ɐqɔpǝɟbɥıɾʞןɯuodbɹsʇnʌʍxʎz‾'؛˙¿¡/\\,";
+    var normal = "abcdefghijklmnopqrstuvwxyz&.,[](){}?!'\"<>_\"\\;`‿⁅∴";
+    var split = "ɐqɔpǝɟbɥıɾʞןɯuodbɹsʇnʌʍxʎz⅋˙'][)(}{¿¡,„><‾„/؛,⁀⁆∵";
     //maj
     normal += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     split += '∀qϽᗡƎℲƃHIſʞ˥WNOԀὉᴚS⊥∩ΛMXʎZ';
@@ -370,7 +373,7 @@ String upsideDown(String input) {
 
     String letter;
 
-    for (var i in filtered.split('')) {
+    for (var i in removedEmojie.split('')) {
       letter = i;
 
       var a = normal.indexOf(letter);
@@ -384,10 +387,11 @@ String upsideDown(String input) {
 }
 
 String upsideDownToNormal(String input) {
-  final filtered = RemoveEmoji().removemoji(input);
+  final removedEmojie = RemoveEmoji().removemoji(input);
+
   try {
-    var normal = "abcdefghijklmnopqrstuvwxyz_,;.?!/\\'";
-    var split = "ɐqɔpǝɟbɥıظʞןɯuodbɹsʇnʌʍxʎz‾'؛˙¿¡/\\,";
+    var normal = "abcdefghijklmnopqrstuvwxyz&.,[](){}?!'\"<>_\"\\;`‿⁅∴";
+    var split = "ɐqɔpǝɟbɥıɾʞןɯuodbɹsʇnʌʍxʎz⅋˙'][)(}{¿¡,„><‾„/؛,⁀⁆∵";
     //maj
     normal += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     split += '∀qϽᗡƎℲƃHIſʞ˥WNOԀὉᴚS⊥∩ΛMXʎZ';
@@ -399,7 +403,7 @@ String upsideDownToNormal(String input) {
 
     String letter;
 
-    for (var i in filtered.split('')) {
+    for (var i in removedEmojie.split('')) {
       letter = i;
 
       var a = split.indexOf(letter);
@@ -496,6 +500,9 @@ String base64DecodeString(String input) {
 }
 
 String converteMorse(String input, bool isMorse) {
+
+  
+
   final Map<String, String> _morse = {
     '': '⍰',
     ' ': '/',
@@ -703,7 +710,11 @@ String convertZalgo({
   bool down = true,
   bool mid = true,
 }) {
-  final filtered = RemoveEmoji().removemoji(input);
+  final removedEmojie = RemoveEmoji().removemoji(input);
+
+  
+
+  
 
   const zalgo_up = [
     '\u030d',
@@ -887,8 +898,8 @@ String convertZalgo({
 
   var zalgoText = '';
 
-  for (var i = 0; i < filtered.length; i++) {
-    if (isZalgoChar(filtered[i])) {
+  for (var i = 0; i < removedEmojie.length; i++) {
+    if (isZalgoChar(removedEmojie[i])) {
       continue;
     }
 
@@ -896,7 +907,7 @@ String convertZalgo({
     int numMid;
     int numDown;
 
-    zalgoText += filtered[i];
+    zalgoText += removedEmojie[i];
 
     if (zalgoOptMini) {
       numUp = rand(8);
@@ -936,15 +947,6 @@ String convertZalgo({
 }
 
 //-------------------------------<< HASH FUNCTIONS >>-------------------------------
-
-// SHA-1
-// SHA-224
-// SHA-256
-// SHA-384
-// SHA-512
-// SHA-512/224
-// SHA-512/256
-// MD5
 
 String getSha1Hash(String input) => sha1.convert(utf8.encode(input)).toString();
 

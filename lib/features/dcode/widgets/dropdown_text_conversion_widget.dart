@@ -1,7 +1,12 @@
 import '../util/config.dart';
 import 'package:flutter/material.dart';
 
-class DropDownTextConversionWidget extends StatelessWidget {
+class DropDownTextConversionWidget extends StatefulWidget {
+  @override
+  _DropDownTextConversionWidgetState createState() => _DropDownTextConversionWidgetState();
+}
+
+class _DropDownTextConversionWidgetState extends State<DropDownTextConversionWidget> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -31,65 +36,65 @@ class DropDownTextConversionWidget extends StatelessWidget {
                   ),
                 )
                 .toList(),
-            onChanged: (selected) {
+            onChanged: (selected) {              
               textConvertionMenuItem = selected;
               switch (textConvertionMenuItem) {
                 case TextConvertionMenuItems.Ascii:
-                  sheetInfo = asciiInfo;
+                  sheetInfoText = asciiInfo;
                   break;
                 case TextConvertionMenuItems.Binary:
-                  sheetInfo = binInfo;
+                  sheetInfoText = binInfo;
                   break;
                 case TextConvertionMenuItems.Hex:
-                  sheetInfo = hexInfo;
+                  sheetInfoText = hexInfo;
                   break;
                 case TextConvertionMenuItems.Octal:
-                  sheetInfo = octalInfo;
+                  sheetInfoText = octalInfo;
                   break;
                 case TextConvertionMenuItems.ReversedLetters:
-                  sheetInfo = reverseLettersInfo;
+                  sheetInfoText = reverseLettersInfo;
                   break;
 
                 case TextConvertionMenuItems.ReversedWords:
-                  sheetInfo = reverseWordsInfo;
+                  sheetInfoText = reverseWordsInfo;
                   break;
 
                 case TextConvertionMenuItems.CapitalizeSentense:
-                  sheetInfo = capitalizeSentenceInfo;
+                  sheetInfoText = capitalizeSentenceInfo;
                   break;
                 case TextConvertionMenuItems.CapitalizeWords:
-                  sheetInfo = capitalizeWordsInfo;
+                  sheetInfoText = capitalizeWordsInfo;
                   break;
                 case TextConvertionMenuItems.UpperCase:
-                  sheetInfo = upperCaseInfo;
+                  sheetInfoText = upperCaseInfo;
                   break;
                 case TextConvertionMenuItems.LowerCase:
-                sheetInfo = lowerCaseInfo;
-                break;
+                  sheetInfoText = lowerCaseInfo;
+                  break;
                 case TextConvertionMenuItems.UpsideDown:
-                sheetInfo = upsideDownInfo;
-                break;
+                  sheetInfoText = upsideDownInfo;
+                  break;
                 case TextConvertionMenuItems.Morse:
-                sheetInfo = morseInfo;
-                break;
+                  sheetInfoText = morseInfo;
+                  break;
                 case TextConvertionMenuItems.ZalgoMini:
-                sheetInfo = zalgoInfo;
-                break;
+                  sheetInfoText = zalgoInfo;
+                  break;
                 case TextConvertionMenuItems.ZalgoNormal:
-                sheetInfo = zalgoInfo;
-                break;
+                  sheetInfoText = zalgoInfo;
+                  break;
                 case TextConvertionMenuItems.ZalgoBig:
-                sheetInfo = zalgoInfo;
-                break;
+                  sheetInfoText = zalgoInfo;
+                  break;
                 case TextConvertionMenuItems.Base64:
-                sheetInfo = base64Info;
-                break;
+                  sheetInfoText = base64Info;
+                  break;
                 case TextConvertionMenuItems.RandomCase:
-                sheetInfo = randomCaseInfo;
-                break;
+                  sheetInfoText = randomCaseInfo;
+                  break;
                 case TextConvertionMenuItems.Nato:
-                sheetInfo = natoInfo;
-                break;
+                  sheetInfoText = natoInfo;
+                  break;
                 default:
               }
             },

@@ -1,7 +1,7 @@
-import 'package:dcode/features/dcode/bloc/dcode_bloc.dart';
-import 'package:dcode/features/dcode/pages/text_conversion_page.dart';
-import 'package:dcode/features/dcode/pages/text_hash_page.dart';
-import 'package:dcode/features/dcode/util/config.dart';
+import '../bloc/dcode_bloc.dart';
+import '../pages/text_conversion_page.dart';
+import '../pages/text_hash_page.dart';
+import '../util/config.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +16,7 @@ class DcodeDrawer extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 100,
+            height: 70,
           ),
           ListTile(
             leading: Icon(
@@ -32,9 +32,13 @@ class DcodeDrawer extends StatelessWidget {
                 TextConversionPage.textConvertionRoute,
               );
               textConvertionMenuItem = TextConvertionMenuItems.Binary;
+              sheetInfoText = binInfo;
               clearDecoded.add(ClearDecoded());
               clearEncoded.add(ClearEncoded());
             },
+          ),
+          Divider(
+            height: 1,
           ),
           ListTile(
             leading: Icon(
@@ -54,7 +58,24 @@ class DcodeDrawer extends StatelessWidget {
               clearEncoded.add(ClearEncoded());
             },
           ),
+          Divider(
+            height: 1,
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.info,
+              size: 32,
+            ),
+            title: Text(
+              'About this app',
+              style: Theme.of(context).textTheme.subtitle1,
+            ),
+            onTap: () {
+              
+            },
+          ),
         ],
+
       ),
     );
   }
