@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 import '../util/config.dart';
 
@@ -18,7 +19,7 @@ class DropDownTextHashWidget extends StatelessWidget {
             icon: Icon(Icons.arrow_drop_down_rounded),
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              filled: true,
+              filled: false,
               contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
             ),
             items: TextHashMenuItems.values
@@ -28,6 +29,10 @@ class DropDownTextHashWidget extends StatelessWidget {
                     value: config,
                     child: Text(
                       config.displayConfig,
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 )

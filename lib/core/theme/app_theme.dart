@@ -39,10 +39,12 @@ ThemeData buildDcodeDarkTheme() {
     primaryColor: dcodeDark200,
     buttonColor: dcodeBlue50,
     scaffoldBackgroundColor: dcodeDark100,
+    
     appBarTheme: AppBarTheme(elevation: 0.0),
     canvasColor: dcodeDark100,
     cardColor: dcodeDark50,
     textSelectionTheme: TextSelectionThemeData(
+      
       selectionColor: dcodeBlue50,
       cursorColor: dcodeBlue50,
       selectionHandleColor: dcodeBlue50,
@@ -79,7 +81,7 @@ TextTheme _buildDcodeDarkTextTheme(TextTheme base) {
         ),
       )
       .apply(
-        fontFamily: 'Segoe',
+        fontFamily: 'SourceSansPro',
         displayColor: dcodeGray,
         bodyColor: dcodeGray,
       );
@@ -96,18 +98,18 @@ AppTheme githubDarkTheme({@required String id}) {
 //-------------------------------------------------------------------------
 
 const ColorScheme _dcodeLightColorScheme = ColorScheme(
-  primary: dcodeDark200,
+  primary: dcodeBlue100,
   primaryVariant: dcodeDark100,
   secondary: dcodeTeal50,
   secondaryVariant: dcodeTeal100,
-  surface: dcodeWhite,
-  background: dcodeWhite,
+  surface: Colors.white,
+  background: Colors.white,
   error: dcodeErrorRed,
-  onPrimary: dcodeWhite,
+  onPrimary: Colors.white,
   onSecondary: dcodeDark200,
   onSurface: dcodeDark200,
   onBackground: dcodeDark200,
-  onError: dcodeWhite,
+  onError: Colors.white,
   brightness: Brightness.light,
 );
 
@@ -116,18 +118,18 @@ ThemeData buildDcodeLightTheme() {
   return base.copyWith(
     colorScheme: _dcodeLightColorScheme,
     toggleableActiveColor: dcodeBlue50,
-    accentColor: dcodeWhite,
-    primaryColor: dcodeDark200,//
+    accentColor: Colors.white,
+    primaryColor: dcodeDark50,//
     buttonColor: dcodeBlue50,
-    scaffoldBackgroundColor: dcodeWhite,
+    scaffoldBackgroundColor: null,
     appBarTheme: AppBarTheme(
       iconTheme: IconThemeData(
         color: Colors.white,
       ),
       elevation: 0.0,
     ),
-    canvasColor: dcodeWhite,
-    cardColor: dcodeGray,
+    canvasColor: Colors.white,
+    cardColor: null,
     textSelectionTheme: TextSelectionThemeData(
       selectionColor: dcodeBlue50,
       cursorColor: dcodeBlue50,
@@ -165,7 +167,7 @@ TextTheme _buildDcodeLightTextTheme(TextTheme base) {
         ),
       )
       .apply(
-        fontFamily: 'Segoe',
+        fontFamily: 'SourceSansPro',
       );
 }
 

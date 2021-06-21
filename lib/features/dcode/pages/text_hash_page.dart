@@ -1,4 +1,5 @@
 import 'package:dcode/features/dcode/widgets/dcode_bottom_sheet.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../bloc/dcode_bloc.dart';
 import '../util/config.dart';
@@ -43,7 +44,7 @@ class _TextHashPageState extends State<TextHashPage> {
         title: Text('Text Hashing'),
         actions: [
           IconButton(
-            icon: Icon(Icons.info_outlined),
+            icon: FaIcon(FontAwesomeIcons.lightbulb),
             onPressed: () {
               showModalBottomSheet(
                 //REVIEW fix modal sheet shows keyboard after closing.
@@ -60,55 +61,15 @@ class _TextHashPageState extends State<TextHashPage> {
               );
             },
           ),
-          PopupMenuButton(
-            icon: Icon(Icons.more_vert),
-            itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-              PopupMenuItem(
-                child: GestureDetector(
-                  onTap: () async {
-                    Navigator.of(context).pop();
-                    await showDialog(
-                      context: context,
-                      builder: (_) => ThemeDialog(
-                        hasDescription: false,
-                        innerCircleColorBuilder: (AppTheme theme) {
-                          return theme.data.accentColor;
-                        },
-                        outerCircleColorBuilder: (AppTheme theme) {
-                          return theme.data.accentColor;
-                        },
-                      ),
-                    );
-                  },
-                  child: ListTile(
-                    leading: Icon(
-                      controller.theme.id == 'dark'
-                          ? Icons.brightness_2
-                          : Icons.brightness_2_outlined,
-                    ),
-                    title: Text('Select Theme'),
-                  ),
-                ),
-              ),
-              PopupMenuItem(
-                child: ListTile(
-                  leading: Icon(Icons.rate_review_sharp),
-                  title: Text('rate us'),
-                ),
-              ),
-              PopupMenuItem(
-                child: ListTile(
-                  leading: Icon(Icons.ad_units_sharp),
-                  title: Text('Remove ads'),
-                ),
-              ),
-              PopupMenuItem(
-                child: ListTile(
-                  leading: Icon(Icons.share_sharp),
-                  title: Text('Share this app'),
-                ),
-              ),
-            ],
+          IconButton(
+            onPressed: () {
+              controller.nextTheme();
+            },
+            icon: FaIcon(
+              controller.theme.id == 'light'
+                  ? FontAwesomeIcons.moon
+                  : FontAwesomeIcons.solidMoon,
+            ),
           ),
         ],
       ),

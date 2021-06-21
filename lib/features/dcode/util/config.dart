@@ -193,7 +193,6 @@ As militaries and NATO continued to follow the Able Baker phonetic alphabet, it 
 };
 
 const Map<String, String> upsideDownInfo = {
-  //TODO https://www.web2generators.com/text-related-tools/write-upside-down
   'About Convert text to upside down text tool':'''The upside down generator flips the input text horizontally and reverses it. This is done by analyzing each input character and replacing it by another Unicode character which resembles the flipped version of it.
   
 The text generated can be used either for fun on various online web-sites and chat systems, or to create a strong password: mypassword will become pɹoʍssɐdʎɯ which is easy enough to remember and re-generate using this tool.''',

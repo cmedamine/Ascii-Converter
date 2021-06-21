@@ -1,4 +1,5 @@
 import 'package:clipboard/clipboard.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:share/share.dart';
 import '../bloc/dcode_bloc.dart';
@@ -53,7 +54,7 @@ class _DcodeTextFieldWidgetState extends State<EncodeTextFieldWidget> {
                       await FlutterClipboard.copy(_decodeController.text);
                     }
                   },
-                  icon: Icon(Icons.copy_sharp),
+                  icon: FaIcon(FontAwesomeIcons.copy),
                   iconSize: 20,
                 ),
                 !widget.isOn
@@ -65,7 +66,7 @@ class _DcodeTextFieldWidgetState extends State<EncodeTextFieldWidget> {
                           _decodeController.text =
                               await FlutterClipboard.paste();
                         },
-                        icon: Icon(Icons.paste_sharp),
+                        icon: FaIcon(FontAwesomeIcons.clipboard),
                         iconSize: 20,
                       ),
                 IconButton(
@@ -74,7 +75,7 @@ class _DcodeTextFieldWidgetState extends State<EncodeTextFieldWidget> {
                       Share.share(_decodeController.text);
                     }
                   },
-                  icon: Icon(Icons.share_sharp),
+                  icon: FaIcon(FontAwesomeIcons.shareAlt),
                   iconSize: 20,
                 ),
                 IconButton(
@@ -82,7 +83,7 @@ class _DcodeTextFieldWidgetState extends State<EncodeTextFieldWidget> {
                     _decodeController.clear();
                     widget.dcodeBloc.add(ClearDecoded());
                   },
-                  icon: Icon(Icons.clear_sharp),
+                  icon: FaIcon(FontAwesomeIcons.trashAlt),
                   iconSize: 20,
                 ),
               ],
@@ -95,6 +96,9 @@ class _DcodeTextFieldWidgetState extends State<EncodeTextFieldWidget> {
               }
               return Expanded(
                 child: TextField(
+                  style: TextStyle(
+                  fontFamily: 'RobotoMono'
+                ),
                   expands: true,
                   maxLines: null,
                   minLines: null,

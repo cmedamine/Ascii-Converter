@@ -1,3 +1,7 @@
+import 'package:dcode/features/dcode/pages/about_page.dart';
+import 'package:dcode/features/dcode/pages/rate_info_page.dart';
+import 'package:dcode/features/dcode/widgets/rate_app_init_widget.dart';
+
 import 'core/theme/app_theme.dart';
 import 'features/dcode/bloc/dcode_bloc.dart';
 import 'features/dcode/pages/text_hash_page.dart';
@@ -46,17 +50,26 @@ class MyApp extends StatelessWidget {
                 create: (context) => DcodeBloc(),
               ),
             ],
-            child: MaterialApp(
-              theme: ThemeProvider.themeOf(context).data,
-              title: 'ASCII Converter',
-              debugShowCheckedModeBanner: false,
-              // home: TextConversionPage(),
-              home: TextConversionPage(),
-
-              routes: {
-                TextConversionPage.textConvertionRoute: (context) =>
-                    TextConversionPage(),
-                TextHashPage.textHashRoute: (context) => TextHashPage(),
+            child: RateAppInitWidget(
+              builder: (rateMyApp) {
+                return MaterialApp(
+                  theme: ThemeProvider.themeOf(context).data,
+                  title: 'ASCII Converter',
+                  debugShowCheckedModeBanner: false,
+                  home: TextConversionPage(
+                    rateMyApp: rateMyApp,
+                  ),
+                  routes: {
+                    TextConversionPage.textConvertionRoute: (context) =>
+                        TextConversionPage(),
+                    TextHashPage.textHashRoute: (context) => TextHashPage(),
+                    AboutPage.route: (context) =>
+                        AboutPage(rateMyApp: rateMyApp),
+                    RateInfoPage.route: (context) => RateInfoPage(
+                          rateMyApp: rateMyApp,
+                        )
+                  },
+                );
               },
             ),
           ),

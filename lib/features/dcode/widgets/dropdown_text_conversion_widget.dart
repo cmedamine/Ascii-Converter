@@ -1,3 +1,6 @@
+import 'package:flutter/rendering.dart';
+import 'package:theme_provider/theme_provider.dart';
+
 import '../util/config.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +25,7 @@ class _DropDownTextConversionWidgetState extends State<DropDownTextConversionWid
             icon: Icon(Icons.arrow_drop_down_rounded),
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              filled: true,
+              filled: false,
               contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
             ),
             items: TextConvertionMenuItems.values
@@ -32,6 +35,10 @@ class _DropDownTextConversionWidgetState extends State<DropDownTextConversionWid
                     value: config,
                     child: Text(
                       config.displayConfig,
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 )
