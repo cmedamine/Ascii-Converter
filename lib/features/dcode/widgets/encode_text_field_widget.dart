@@ -96,9 +96,6 @@ class _DcodeTextFieldWidgetState extends State<EncodeTextFieldWidget> {
               }
               return Expanded(
                 child: TextField(
-                  style: TextStyle(
-                  fontFamily: 'RobotoMono'
-                ),
                   expands: true,
                   maxLines: null,
                   minLines: null,

@@ -96,9 +96,6 @@ class _DecodeTextFieldWidgetState extends State<DecodeTextFieldWidget> {
               }
               return Expanded(
                 child: TextField(
-                  style: TextStyle(
-                    fontFamily: 'RobotoMono',
-                  ),
                   expands: true,
                   maxLines: null,
                   minLines: null,

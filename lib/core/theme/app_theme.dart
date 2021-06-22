@@ -81,7 +81,6 @@ TextTheme _buildDcodeDarkTextTheme(TextTheme base) {
         ),
       )
       .apply(
-        fontFamily: 'SourceSansPro',
         displayColor: dcodeGray,
         bodyColor: dcodeGray,
       );
@@ -165,9 +164,6 @@ TextTheme _buildDcodeLightTextTheme(TextTheme base) {
           fontSize: 14,
           letterSpacing: defaultLetterSpacing,
         ),
-      )
-      .apply(
-        fontFamily: 'SourceSansPro',
       );
 }
 

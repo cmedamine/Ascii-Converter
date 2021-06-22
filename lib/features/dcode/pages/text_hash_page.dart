@@ -41,7 +41,10 @@ class _TextHashPageState extends State<TextHashPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Text Hashing'),
+        title: Text(
+          'Text Hashing',
+          style: TextStyle(fontFamily: 'DMSans'),
+        ),
         actions: [
           IconButton(
             icon: FaIcon(FontAwesomeIcons.lightbulb),

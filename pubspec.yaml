@@ -82,18 +82,20 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  # fonts:
   fonts:
-    - family: RobotoMono
+    - family: DMSans
       fonts:
-        - asset: assets/fonts/RobotoMono-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+        - asset: assets/fonts/DMSans-Regular.ttf
+        - asset: assets/fonts/DMSans-Medium.ttf
+        - asset: assets/fonts/DMSans-Bold.ttf
+          weight: 700
 
-    - family: SourceSansPro
-      fonts:
-        - asset: assets/fonts/SourceSansPro-Regular.ttf
-        - asset: assets/fonts/SourceSansPro-SemiBold.ttf
-          weight: 600
+    # - family: SourceSansPro
+    #   fonts:
+    #     - asset: assets/fonts/SourceSansPro-Regular.ttf
+    #     - asset: assets/fonts/SourceSansPro-SemiBold.ttf
+    #       weight: 600
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

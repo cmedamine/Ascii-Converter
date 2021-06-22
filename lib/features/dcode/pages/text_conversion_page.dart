@@ -15,7 +15,6 @@ import 'package:flutter/material.dart';
 class TextConversionPage extends StatefulWidget {
   static const textConvertionRoute = '/text_conversion_page';
 
-
   const TextConversionPage({Key key}) : super(key: key);
   @override
   _TextConversionPageState createState() => _TextConversionPageState();
@@ -29,7 +28,10 @@ class _TextConversionPageState extends State<TextConversionPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Text Conversion'),
+        title: Text(
+          'Text Conversion',
+          style: TextStyle(fontFamily: 'DMSans'),
+        ),
         actions: [
           IconButton(
             icon: FaIcon(FontAwesomeIcons.lightbulb),

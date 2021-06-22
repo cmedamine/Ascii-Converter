@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DcodeBottomSheet extends StatelessWidget {
-
   final String title;
   final String text;
 
   const DcodeBottomSheet({Key key, this.title, this.text}) : super(key: key);
-
 
   Widget makeDismissable({
     @required Widget child,
@@ -34,15 +32,18 @@ class DcodeBottomSheet extends StatelessWidget {
               ),
               Text(
                 title,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline6
-                    .copyWith(color: Colors.blue),
+                style: Theme.of(context).textTheme.headline6.copyWith(
+                      color: Colors.blue,
+                      fontFamily: 'DMSans',
+                    ),
               ),
               SizedBox(
                 height: 15,
               ),
-              Text(text),
+              Text(
+                text,
+                style: TextStyle(fontFamily: 'DMSans'),
+              ),
             ],
           ),
         ),

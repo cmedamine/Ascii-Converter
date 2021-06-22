@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:theme_provider/theme_provider.dart';
-
 import '../util/config.dart';
 
 class DropDownTextHashWidget extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -31,6 +30,7 @@ class DropDownTextHashWidget extends StatelessWidget {
                       config.displayConfig,
                       style: TextStyle(
                         color: Colors.blue,
+                        fontFamily: 'DMSans',
                         fontWeight: FontWeight.w600,
                       ),
                     ),

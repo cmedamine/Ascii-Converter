@@ -105,6 +105,7 @@ class _DcodeDrawerState extends State<DcodeDrawer> {
                     style: TextStyle(
                       fontSize: 18.0,
                       // fontWeight: FontWeight.bold,
+                      fontFamily: 'DMSans',
                       color: Colors.white,
                     ),
                   ),
@@ -157,7 +158,9 @@ class _DcodeDrawerState extends State<DcodeDrawer> {
             ),
             title: Text(
               'Text conversion',
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    fontFamily: 'DMSans',
+                  ),
             ),
             onTap: () {
               Navigator.of(context).pushReplacementNamed(
@@ -175,7 +178,9 @@ class _DcodeDrawerState extends State<DcodeDrawer> {
             ),
             title: Text(
               'Hash',
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    fontFamily: 'DMSans',
+                  ),
             ),
             onTap: () {
               Navigator.of(context).pushReplacementNamed(
@@ -193,7 +198,9 @@ class _DcodeDrawerState extends State<DcodeDrawer> {
             ),
             title: Text(
               'Share this app',
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    fontFamily: 'DMSans',
+                  ),
             ),
             onTap: () async {
               await Share.share(myAppLink);
@@ -204,21 +211,16 @@ class _DcodeDrawerState extends State<DcodeDrawer> {
               FontAwesomeIcons.star,
             ),
             title: Text(
-              'Share this app',
-              style: Theme.of(context).textTheme.subtitle1,
+              'Rate this app',
+              style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    fontFamily: 'DMSans',
+                  ),
             ),
             onTap: () async {
               if (await canLaunch(myAppLink))
                 await launch(myAppLink);
               else
-                // can't launch url, there is some error
-
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('Could not open the url!, please try again.'),
-                ),
-              );
+                throw "Could not launch $myAppLink";
             },
           ),
           ListTile(
@@ -227,7 +229,9 @@ class _DcodeDrawerState extends State<DcodeDrawer> {
             ),
             title: Text(
               'Help & About',
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    fontFamily: 'DMSans',
+                  ),
             ),
             onTap: () {
               Navigator.of(context).pushNamed(AboutPage.route);

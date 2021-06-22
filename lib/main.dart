@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
               SchedulerBinding.instance.window.platformBrightness ??
                   Brightness.light;
           if (platformBrightness == Brightness.dark) {
-            controller.setTheme('lark');
+            controller.setTheme('dark');
           } else {
             controller.setTheme('light');
           }

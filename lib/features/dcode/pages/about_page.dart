@@ -7,7 +7,10 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('About'),
+        title: Text(
+          'About',
+          style: TextStyle(fontFamily: 'DMSans'),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -45,15 +48,24 @@ class AboutPage extends StatelessWidget {
                         children: [
                           Text(
                             'ASCII Converter',
-                            style: Theme.of(context).textTheme.headline6,
+                            style:
+                                Theme.of(context).textTheme.headline6.copyWith(
+                                      fontFamily: 'DMSans',
+                                    ),
                           ),
                           Text(
                             'Nimble Apps',
-                            style: Theme.of(context).textTheme.subtitle2,
+                            style:
+                                Theme.of(context).textTheme.subtitle2.copyWith(
+                                      fontFamily: 'DMSans',
+                                    ),
                           ),
                           Text(
                             '1.0.0',
-                            style: Theme.of(context).textTheme.subtitle2,
+                            style:
+                                Theme.of(context).textTheme.subtitle2.copyWith(
+                                      fontFamily: 'DMSans',
+                                    ),
                           ),
                         ],
                       )
@@ -80,6 +92,9 @@ class AboutPage extends StatelessWidget {
 including converting text to ascii, Hex, Binary, encryption and much more!. 
 
 You can do whatever you want with the text you're working on right here.''',
+                    style: TextStyle(
+                      fontFamily: 'DMSans',
+                    ),
                   ),
                 ),
               ),
@@ -87,8 +102,6 @@ You can do whatever you want with the text you're working on right here.''',
             SizedBox(
               height: 20,
             ),
-
-            
           ],
         ),
       ),

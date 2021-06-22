@@ -1,15 +1,9 @@
 import 'package:flutter/rendering.dart';
-import 'package:theme_provider/theme_provider.dart';
-
 import '../util/config.dart';
 import 'package:flutter/material.dart';
 
-class DropDownTextConversionWidget extends StatefulWidget {
-  @override
-  _DropDownTextConversionWidgetState createState() => _DropDownTextConversionWidgetState();
-}
-
-class _DropDownTextConversionWidgetState extends State<DropDownTextConversionWidget> {
+class DropDownTextConversionWidget extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -37,6 +31,7 @@ class _DropDownTextConversionWidgetState extends State<DropDownTextConversionWid
                       config.displayConfig,
                       style: TextStyle(
                         color: Colors.blue,
+                        fontFamily: 'DMSans',
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -61,11 +56,9 @@ class _DropDownTextConversionWidgetState extends State<DropDownTextConversionWid
                 case TextConvertionMenuItems.ReversedLetters:
                   sheetInfoText = reverseLettersInfo;
                   break;
-
                 case TextConvertionMenuItems.ReversedWords:
                   sheetInfoText = reverseWordsInfo;
                   break;
-
                 case TextConvertionMenuItems.CapitalizeSentense:
                   sheetInfoText = capitalizeSentenceInfo;
                   break;
