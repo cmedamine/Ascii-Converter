@@ -1,5 +1,6 @@
 import 'package:dcode/features/dcode/pages/about_page.dart';
-import 'package:rate_my_app/rate_my_app.dart';
+import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../bloc/dcode_bloc.dart';
 import '../pages/text_conversion_page.dart';
@@ -11,63 +12,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DcodeDrawer extends StatefulWidget {
-  final RateMyApp rateMyApp;
-
-  const DcodeDrawer({Key key, this.rateMyApp}) : super(key: key);
+  const DcodeDrawer({Key key}) : super(key: key);
 
   @override
   _DcodeDrawerState createState() => _DcodeDrawerState();
 }
 
 class _DcodeDrawerState extends State<DcodeDrawer> {
-  List<Widget> actionsBuidler(BuildContext context, double stars) =>
-      stars == null
-          ? [buildCancelButton()]
-          : [
-              buildOkButton(stars),
-              buildCancelButton(),
-            ];
-
-  Widget buildOkButton(double stars) => TextButton(
-        child: Text('OK'),
-        onPressed: () async {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Thanks for your feedback!🙏'),
-            ),
-          );
-
-          final event = RateMyAppEventType.rateButtonPressed;
-          await widget.rateMyApp.callEvent(event);
-          //REVIEW stars might be 3 or higher!
-          bool launchPlayStore = stars >= 4;
-
-          if (launchPlayStore) {
-            widget.rateMyApp.launchStore();
-          }
-
-          Navigator.of(context).pop();
-        },
-      );
-
-  Widget buildCancelButton() => RateMyAppNoButton(
-        widget.rateMyApp,
-        text: 'CANCEL',
-      );
-
-  TextEditingController _commentController;
-
-  Widget buildComment(BuildContext context) => TextFormField(
-        controller: _commentController,
-        maxLines: 3,
-        autofocus: true,
-        onFieldSubmitted: (_) => Navigator.of(context).pop(),
-        decoration: InputDecoration(
-            hintText: 'Write Comment...', border: OutlineInputBorder()),
-        onChanged: (value) {
-          _commentController.text = value;
-        },
-      );
+  final myAppLink =
+      'http://www.amazon.com/gp/mas/dl/android?p=com.nimbleapps.asciiconverter';
 
   List<Color> colorList = [
     Colors.red,
@@ -92,7 +45,6 @@ class _DcodeDrawerState extends State<DcodeDrawer> {
   @override
   void initState() {
     super.initState();
-    _commentController = TextEditingController();
     startAnimation = Future.delayed(
       const Duration(milliseconds: 10),
       () {
@@ -105,7 +57,6 @@ class _DcodeDrawerState extends State<DcodeDrawer> {
 
   @override
   void dispose() {
-    _commentController.dispose();
     startAnimation = null;
     super.dispose();
   }
@@ -244,38 +195,31 @@ class _DcodeDrawerState extends State<DcodeDrawer> {
               'Share this app',
               style: Theme.of(context).textTheme.subtitle1,
             ),
-            onTap: () {},
+            onTap: () async {
+              await Share.share(myAppLink);
+            },
           ),
           ListTile(
             leading: FaIcon(
               FontAwesomeIcons.star,
             ),
             title: Text(
-              'rate us',
+              'Share this app',
               style: Theme.of(context).textTheme.subtitle1,
             ),
-            onTap: () {
-              widget.rateMyApp.showStarRateDialog(
-                context,
-                title: '🌟 Rate This App',
-                message: 'Do you like this app? Please leave a rating.',
-                starRatingOptions: StarRatingOptions(
-                  initialRating: 4,
+            onTap: () async {
+              if (await canLaunch(myAppLink))
+                await launch(myAppLink);
+              else
+                // can't launch url, there is some error
+
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Could not open the url!, please try again.'),
                 ),
-                // contentBuilder: (context, _) => buildComment(context),//NOTE this is optional for adding comment
-                actionsBuilder: actionsBuidler,
               );
             },
-          ),
-          ListTile(
-            leading: FaIcon(
-              FontAwesomeIcons.ad,
-            ),
-            title: Text(
-              'Remove ads',
-              style: Theme.of(context).textTheme.subtitle1,
-            ),
-            onTap: () {},
           ),
           ListTile(
             leading: FaIcon(

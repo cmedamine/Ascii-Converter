@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nimbleapps.asciiconverter">
+    <uses-permission android:name="android.permission.INTERNET" />
+
    <application
         android:label="ASCII Converter"
         android:icon="@mipmap/ic_launcher">

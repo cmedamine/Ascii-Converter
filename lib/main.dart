@@ -1,6 +1,4 @@
 import 'package:dcode/features/dcode/pages/about_page.dart';
-import 'package:dcode/features/dcode/pages/rate_info_page.dart';
-import 'package:dcode/features/dcode/widgets/rate_app_init_widget.dart';
 
 import 'core/theme/app_theme.dart';
 import 'features/dcode/bloc/dcode_bloc.dart';
@@ -9,11 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:theme_provider/theme_provider.dart';
+import 'package:flutter/services.dart';
 
 import 'features/dcode/pages/text_conversion_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+  ]);
   runApp(MyApp());
 }
 
@@ -50,26 +52,16 @@ class MyApp extends StatelessWidget {
                 create: (context) => DcodeBloc(),
               ),
             ],
-            child: RateAppInitWidget(
-              builder: (rateMyApp) {
-                return MaterialApp(
-                  theme: ThemeProvider.themeOf(context).data,
-                  title: 'ASCII Converter',
-                  debugShowCheckedModeBanner: false,
-                  home: TextConversionPage(
-                    rateMyApp: rateMyApp,
-                  ),
-                  routes: {
-                    TextConversionPage.textConvertionRoute: (context) =>
-                        TextConversionPage(),
-                    TextHashPage.textHashRoute: (context) => TextHashPage(),
-                    AboutPage.route: (context) =>
-                        AboutPage(rateMyApp: rateMyApp),
-                    RateInfoPage.route: (context) => RateInfoPage(
-                          rateMyApp: rateMyApp,
-                        )
-                  },
-                );
+            child: MaterialApp(
+              theme: ThemeProvider.themeOf(context).data,
+              title: 'ASCII Converter',
+              debugShowCheckedModeBanner: false,
+              home: TextConversionPage(),
+              routes: {
+                TextConversionPage.textConvertionRoute: (context) =>
+                    TextConversionPage(),
+                TextHashPage.textHashRoute: (context) => TextHashPage(),
+                AboutPage.route: (context) => AboutPage(),
               },
             ),
           ),

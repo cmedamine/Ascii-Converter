@@ -1,6 +1,5 @@
 import 'package:dcode/features/dcode/widgets/dcode_bottom_sheet.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rate_my_app/rate_my_app.dart';
 
 import '../bloc/dcode_bloc.dart';
 import '../util/config.dart';
@@ -16,9 +15,8 @@ import 'package:flutter/material.dart';
 class TextConversionPage extends StatefulWidget {
   static const textConvertionRoute = '/text_conversion_page';
 
-  final RateMyApp rateMyApp;
 
-  const TextConversionPage({Key key, this.rateMyApp}) : super(key: key);
+  const TextConversionPage({Key key}) : super(key: key);
   @override
   _TextConversionPageState createState() => _TextConversionPageState();
 }
@@ -63,7 +61,7 @@ class _TextConversionPageState extends State<TextConversionPage> {
           ),
         ],
       ),
-      drawer: DcodeDrawer(rateMyApp: widget.rateMyApp,),
+      drawer: DcodeDrawer(),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 8, 16),
         child: Column(
