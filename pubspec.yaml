@@ -88,8 +88,7 @@ flutter:
       fonts:
         - asset: assets/fonts/DMSans-Regular.ttf
         - asset: assets/fonts/DMSans-Medium.ttf
-        - asset: assets/fonts/DMSans-Bold.ttf
-          weight: 700
+          weight: 500
 
     # - family: SourceSansPro
     #   fonts:

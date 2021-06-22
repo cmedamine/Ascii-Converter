@@ -88,10 +88,9 @@ class AboutPage extends StatelessWidget {
                   child: Text(
                     '''Welcom to ASCII Converter app
 
-  ASCII Converter is about a complete set of text formatting tools for you, as well as many other tools, 
-including converting text to ascii, Hex, Binary, encryption and much more!. 
+  ASCII Converter is about a complete set of text formatting tools for you, as well as many other tools, including converting text to ascii, Hex, Binary, encryption and much more!. 
 
-You can do whatever you want with the text you're working on right here.''',
+You can do whatever you want with the text you're working on right here, I hope you enjoy this app.''',
                     style: TextStyle(
                       fontFamily: 'DMSans',
                     ),
