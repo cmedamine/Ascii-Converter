@@ -38,9 +38,10 @@ ThemeData buildDcodeDarkTheme() {
     accentColor: dcodeDark200,
     primaryColor: dcodeDark200,
     buttonColor: dcodeBlue50,
+    
     scaffoldBackgroundColor: dcodeDark100,
     
-    appBarTheme: AppBarTheme(elevation: 0.0),
+    appBarTheme: AppBarTheme(elevation: 0.0, backgroundColor: dcodeDark200),
     canvasColor: dcodeDark100,
     cardColor: dcodeDark50,
     textSelectionTheme: TextSelectionThemeData(
@@ -126,6 +127,7 @@ ThemeData buildDcodeLightTheme() {
         color: Colors.white,
       ),
       elevation: 0.0,
+      backgroundColor: dcodeDark100
     ),
     canvasColor: Colors.white,
     cardColor: null,
